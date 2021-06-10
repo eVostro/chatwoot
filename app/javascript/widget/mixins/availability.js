@@ -4,10 +4,10 @@ import { buildDateFromTime } from 'shared/helpers/DateHelper';
 export default {
   computed: {
     channelConfig() {
-      return window.chatwootWebChannel;
+      return window.op2WebChannel;
     },
     replyTime() {
-      return window.chatwootWebChannel.replyTime;
+      return window.op2WebChannel.replyTime;
     },
     replyTimeStatus() {
       switch (this.replyTime) {

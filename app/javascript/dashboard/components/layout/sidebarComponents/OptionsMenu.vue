@@ -16,7 +16,7 @@
             {{ $t('SIDEBAR_ITEMS.CHANGE_ACCOUNTS') }}
           </woot-button>
         </woot-dropdown-item>
-        <woot-dropdown-item v-if="globalConfig.chatwootInboxToken">
+        <woot-dropdown-item v-if="globalConfig.op2InboxToken">
           <woot-button
             variant="clear"
             size="small"
@@ -85,8 +85,8 @@ export default {
     logout() {
       Auth.logout();
 
-      if (this.globalConfig.chatwootInboxToken) {
-        window.$chatwoot.reset();
+      if (this.globalConfig.op2InboxToken) {
+        window.$op2.reset();
       }
     },
   },

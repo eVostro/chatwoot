@@ -2,13 +2,13 @@ import { createWrapper } from '@vue/test-utils';
 import configMixin from '../configMixin';
 import Vue from 'vue';
 
-global.chatwootWebChannel = {
+global.op2WebChannel = {
   avatarUrl: 'https://test.url',
   hasAConnectedAgentBot: 'AgentBot',
   enabledFeatures: ['emoji_picker', 'attachments'],
 };
 
-global.chatwootWidgetDefaults = {
+global.op2WidgetDefaults = {
   useInboxAvatarForBot: true,
 };
 

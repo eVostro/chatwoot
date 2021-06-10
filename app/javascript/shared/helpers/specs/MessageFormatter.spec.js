@@ -4,16 +4,16 @@ describe('#MessageFormatter', () => {
   describe('content with links', () => {
     it('should format correctly', () => {
       const message =
-        'Chatwoot is an opensource tool. [Chatwoot](https://www.chatwoot.com)';
+        'bnk2 is an opensource tool. [op2](https://www.op2.com)';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <a rel="noreferrer noopener nofollow" href="https://www.chatwoot.com" class="link" title="" target="_blank">Chatwoot</a></p>'
+        '<p>bnk2 is an opensource tool. <a rel="noreferrer noopener nofollow" href="https://www.op2.com" class="link" title="" target="_blank">op2</a></p>'
       );
     });
     it('should format correctly', () => {
       const message =
-        'Chatwoot is an opensource tool. https://www.chatwoot.com';
+        'bnk2 is an opensource tool. https://www.op2.com';
       expect(new MessageFormatter(message).formattedMessage).toMatch(
-        '<p>Chatwoot is an opensource tool. <a rel="noreferrer noopener nofollow" href="https://www.chatwoot.com" class="link" title="" target="_blank">https://www.chatwoot.com</a></p>'
+        '<p>bnk2 is an opensource tool. <a rel="noreferrer noopener nofollow" href="https://www.op2.com" class="link" title="" target="_blank">https://www.op2.com</a></p>'
       );
     });
   });
@@ -29,22 +29,22 @@ describe('#MessageFormatter', () => {
 
   describe('tweets', () => {
     it('should return the same string if not tags or @mentions', () => {
-      const message = 'Chatwoot is an opensource tool';
+      const message = 'bnk2 is an opensource tool';
       expect(new MessageFormatter(message).formattedMessage).toMatch(message);
     });
 
     it('should add links to @mentions', () => {
       const message =
-        '@chatwootapp is an opensource tool thanks @longnonexistenttwitterusername';
+        '@op2app is an opensource tool thanks @longnonexistenttwitterusername';
       expect(new MessageFormatter(message, true).formattedMessage).toMatch(
-        '<p><a href="http://twitter.com/chatwootapp" target="_blank" rel="noreferrer nofollow noopener">@chatwootapp</a> is an opensource tool thanks @longnonexistenttwitterusername</p>'
+        '<p><a href="http://twitter.com/op2app" target="_blank" rel="noreferrer nofollow noopener">@op2app</a> is an opensource tool thanks @longnonexistenttwitterusername</p>'
       );
     });
 
     it('should add links to #tags', () => {
-      const message = '#chatwootapp is an opensource tool';
+      const message = '#op2app is an opensource tool';
       expect(new MessageFormatter(message, true).formattedMessage).toMatch(
-        '<p><a href="https://twitter.com/hashtag/chatwootapp" target="_blank" rel="noreferrer nofollow noopener">#chatwootapp</a> is an opensource tool</p>'
+        '<p><a href="https://twitter.com/hashtag/op2app" target="_blank" rel="noreferrer nofollow noopener">#op2app</a> is an opensource tool</p>'
       );
     });
   });
@@ -52,9 +52,9 @@ describe('#MessageFormatter', () => {
   describe('plain text content', () => {
     it('returns the plain text without HTML', () => {
       const message =
-        '<b>Chatwoot is an opensource tool. https://www.chatwoot.com</b>';
+        '<b>bnk2 is an opensource tool. https://www.op2.com</b>';
       expect(new MessageFormatter(message).plainText).toMatch(
-        'Chatwoot is an opensource tool. https://www.chatwoot.com'
+        'bnk2 is an opensource tool. https://www.op2.com'
       );
     });
   });

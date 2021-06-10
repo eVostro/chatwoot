@@ -9,7 +9,7 @@ const ALLOWED_USER_ATTRIBUTES = [...REQUIRED_USER_KEYS, 'identifier_hash'];
 
 export const getUserCookieName = () => {
   const SET_USER_COOKIE_PREFIX = 'cw_user_';
-  const { websiteToken: websiteIdentifier } = window.$chatwoot;
+  const { websiteToken: websiteIdentifier } = window.$op2;
   return `${SET_USER_COOKIE_PREFIX}${websiteIdentifier}`;
 };
 
@@ -27,18 +27,18 @@ export const hasUserKeys = user =>
   REQUIRED_USER_KEYS.reduce((acc, key) => acc || !!user[key], false);
 
 const runSDK = ({ baseUrl, websiteToken }) => {
-  const chatwootSettings = window.chatwootSettings || {};
-  window.$chatwoot = {
+  const op2Settings = window.op2Settings || {};
+  window.$bnk2 = {
     baseUrl,
     hasLoaded: false,
-    hideMessageBubble: chatwootSettings.hideMessageBubble || false,
+    hideMessageBubble: op2Settings.hideMessageBubble || false,
     isOpen: false,
-    position: chatwootSettings.position === 'left' ? 'left' : 'right',
+    position: op2Settings.position === 'left' ? 'left' : 'right',
     websiteToken,
-    locale: chatwootSettings.locale,
-    type: getBubbleView(chatwootSettings.type),
-    launcherTitle: chatwootSettings.launcherTitle || '',
-    showPopoutButton: chatwootSettings.showPopoutButton || false,
+    locale: op2Settings.locale,
+    type: getBubbleView(op2Settings.type),
+    launcherTitle: op2Settings.launcherTitle || '',
+    showPopoutButton: op2Settings.showPopoutButton || false,
 
     toggle() {
       IFrameHelper.events.toggleBubble();
@@ -62,8 +62,8 @@ const runSDK = ({ baseUrl, websiteToken }) => {
         return;
       }
 
-      window.$chatwoot.identifier = identifier;
-      window.$chatwoot.user = user;
+      window.$op2.identifier = identifier;
+      window.$op2.user = user;
       IFrameHelper.sendMessage('set-user', { identifier, user });
       Cookies.set(userCookieName, hashToBeStored, {
         expires: 365,
@@ -102,7 +102,7 @@ const runSDK = ({ baseUrl, websiteToken }) => {
     },
 
     reset() {
-      if (window.$chatwoot.isOpen) {
+      if (window.$op2.isOpen) {
         IFrameHelper.events.toggleBubble();
       }
 
@@ -111,8 +111,8 @@ const runSDK = ({ baseUrl, websiteToken }) => {
 
       const iframe = IFrameHelper.getAppFrame();
       iframe.src = IFrameHelper.getUrl({
-        baseUrl: window.$chatwoot.baseUrl,
-        websiteToken: window.$chatwoot.websiteToken,
+        baseUrl: window.$op2.baseUrl,
+        websiteToken: window.$op2.websiteToken,
       });
     },
   };
@@ -123,6 +123,6 @@ const runSDK = ({ baseUrl, websiteToken }) => {
   });
 };
 
-window.chatwootSDK = {
+window.op2SDK = {
   run: runSDK,
 };

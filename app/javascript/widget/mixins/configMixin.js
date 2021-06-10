@@ -1,16 +1,16 @@
 export default {
   computed: {
     useInboxAvatarForBot() {
-      return window.chatwootWidgetDefaults.useInboxAvatarForBot;
+      return window.op2WidgetDefaults.useInboxAvatarForBot;
     },
     hasAConnectedAgentBot() {
-      return !!window.chatwootWebChannel.hasAConnectedAgentBot;
+      return !!window.op2WebChannel.hasAConnectedAgentBot;
     },
     inboxAvatarUrl() {
-      return window.chatwootWebChannel.avatarUrl;
+      return window.op2WebChannel.avatarUrl;
     },
     channelConfig() {
-      return window.chatwootWebChannel;
+      return window.op2WebChannel;
     },
     hasEmojiPickerEnabled() {
       return this.channelConfig.enabledFeatures.includes('emoji_picker');
@@ -19,10 +19,10 @@ export default {
       return this.channelConfig.enabledFeatures.includes('attachments');
     },
     preChatFormEnabled() {
-      return window.chatwootWebChannel.preChatFormEnabled;
+      return window.op2WebChannel.preChatFormEnabled;
     },
     preChatFormOptions() {
-      const options = window.chatwootWebChannel.preChatFormOptions || {};
+      const options = window.op2WebChannel.preChatFormOptions || {};
       return {
         requireEmail: options.require_email,
         preChatMessage: options.pre_chat_message,

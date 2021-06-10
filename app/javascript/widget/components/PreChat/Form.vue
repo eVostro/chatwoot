@@ -56,7 +56,7 @@ import FormInput from '../Form/Input';
 import FormTextArea from '../Form/TextArea';
 import Spinner from 'shared/components/Spinner';
 import { mapGetters } from 'vuex';
-import { getContrastingTextColor } from '@chatwoot/utils';
+import { getContrastingTextColor } from '@op2/utils';
 import { required, minLength, email } from 'vuelidate/lib/validators';
 export default {
   components: {

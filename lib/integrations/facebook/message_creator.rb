@@ -22,8 +22,8 @@ class Integrations::Facebook::MessageCreator
   private
 
   def agent_message_via_echo?
-    response.echo? && !response.sent_from_chatwoot_app?
-    # this means that it is an agent message from page, but not sent from chatwoot.
+    response.echo? && !response.sent_from_op2_app?
+    # this means that it is an agent message from page, but not sent from op2.
     # User can send from fb page directly on mobile / web messenger, so this case should be handled as agent message
   end
 

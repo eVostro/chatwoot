@@ -26,11 +26,11 @@ class Installation::OnboardingController < ApplicationController
   end
 
   def finish_onboarding
-    ::Redis::Alfred.delete(::Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING)
-    ChatwootHub.register_instance(onboarding_params) if onboarding_params[:subscribe_to_updates]
+    ::Redis::Alfred.delete(::Redis::Alfred::op2_INSTALLATION_ONBOARDING)
+    op2Hub.register_instance(onboarding_params) if onboarding_params[:subscribe_to_updates]
   end
 
   def ensure_installation_onboarding
-    redirect_to '/' unless ::Redis::Alfred.get(::Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING)
+    redirect_to '/' unless ::Redis::Alfred.get(::Redis::Alfred::op2_INSTALLATION_ONBOARDING)
   end
 end

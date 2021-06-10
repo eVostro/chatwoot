@@ -40,21 +40,21 @@ jobs:
 
       - restore_cache:
           keys:
-            - chatwoot-bundle-{{ checksum "Gemfile.lock" }}
-            - chatwoot-bundle
+            - op2-bundle-{{ checksum "Gemfile.lock" }}
+            - op2-bundle
 
       - run: bundle install --frozen --path ~/.bundle
       - save_cache:
           paths:
             - ~/.bundle
-          key: chatwoot-bundle-{{ checksum "Gemfile.lock" }}
+          key: op2-bundle-{{ checksum "Gemfile.lock" }}
 
 
       # Only necessary if app uses webpacker or yarn in some other way
       - restore_cache:
           keys:
-            - chatwoot-yarn-{{ checksum "yarn.lock" }}
-            - chatwoot-yarn-
+            - op2-yarn-{{ checksum "yarn.lock" }}
+            - op2-yarn-
 
       - run:
           name: yarn
@@ -62,7 +62,7 @@ jobs:
 
       # Store yarn / webpacker cache
       - save_cache:
-          key: chatwoot-yarn-{{ checksum "yarn.lock" }}
+          key: op2-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 

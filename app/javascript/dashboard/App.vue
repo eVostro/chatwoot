@@ -27,7 +27,7 @@ export default {
 
   mounted() {
     this.$store.dispatch('setUser');
-    this.setLocale(window.chatwootConfig.selectedLocale);
+    this.setLocale(window.op2Config.selectedLocale);
     this.initializeAccount();
   },
 

@@ -1,7 +1,7 @@
 export default {
   methods: {
     useInstallationName(str = '', installationName) {
-      return str.replace(/Chatwoot/g, installationName);
+      return str.replace(/op2/g, installationName);
     },
   },
 };

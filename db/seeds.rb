@@ -5,7 +5,7 @@ ConfigLoader.new.process
 ## Seeds productions
 if Rails.env.production?
   # Setup Onboarding flow
-  ::Redis::Alfred.set(::Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING, true)
+  ::Redis::Alfred.set(::Redis::Alfred::op2_INSTALLATION_ONBOARDING, true)
 end
 
 ## Seeds for Local Development
@@ -73,5 +73,5 @@ unless Rails.env.production?
   # articles
   WootMessageSeeder.create_sample_articles_message conversation
 
-  CannedResponse.create!(account: account, short_code: 'start', content: 'Hello welcome to chatwoot.')
+  CannedResponse.create!(account: account, short_code: 'start', content: 'Hello welcome to op2.')
 end

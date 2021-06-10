@@ -94,7 +94,7 @@ export const validateAuthenticateRoutePermission = (to, from, next) => {
 
 const validateRouteAccess = (to, from, next) => {
   if (
-    window.chatwootConfig.signupEnabled !== 'true' &&
+    window.op2Config.signupEnabled !== 'true' &&
     to.meta &&
     to.meta.requireSignupEnabled
   ) {

@@ -1,9 +1,9 @@
-class ChatwootHub
-  BASE_URL = ENV['CHATWOOT_HUB_URL'] || 'https://hub.chatwoot.com'
+class op2Hub
+  BASE_URL = ENV['op2_HUB_URL'] || 'https://hub.op2.com'
 
   def self.instance_config
     {
-      installationVersion: Chatwoot.config[:version],
+      installationVersion: op2.config[:version],
       installationHost: URI.parse(ENV.fetch('FRONTEND_URL', '')).host
     }
   end

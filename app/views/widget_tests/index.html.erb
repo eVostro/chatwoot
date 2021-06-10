@@ -12,7 +12,7 @@
 %>
 <script>
 
-window.chatwootSettings = {
+window.op2Settings = {
   hideMessageBubble: false,
   position: 'left',
   locale: 'en',
@@ -26,17 +26,17 @@ window.chatwootSettings = {
   g.src= BASE_URL + "/packs/js/sdk.js";
   s.parentNode.insertBefore(g,s);
   g.onload=function(){
-    window.chatwootSDK.run({
+    window.op2SDK.run({
       websiteToken: '<%= @web_widget.website_token %>',
       baseUrl: BASE_URL
     })
   }
 })(document,"script");
 
-window.addEventListener('chatwoot:ready', function() {
-  console.log(window.$chatwoot);
+window.addEventListener('op2:ready', function() {
+  console.log(window.$op2);
   if (window.location.search.includes('setUser')) {
-    window.$chatwoot.setUser('<%= user_id %>', {
+    window.$op2.setUser('<%= user_id %>', {
       identifier_hash: '<%= user_hash %>',
       email: 'jane@example.com',
       name: 'Jane Doe'

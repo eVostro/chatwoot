@@ -111,7 +111,7 @@ class User < ApplicationRecord
   end
 
   def hmac_identifier
-    hmac_key = GlobalConfig.get('CHATWOOT_INBOX_HMAC_KEY')['CHATWOOT_INBOX_HMAC_KEY']
+    hmac_key = GlobalConfig.get('op2_INBOX_HMAC_KEY')['op2_INBOX_HMAC_KEY']
     return OpenSSL::HMAC.hexdigest('sha256', hmac_key, email) if hmac_key.present?
 
     ''

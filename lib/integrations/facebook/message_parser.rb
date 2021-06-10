@@ -41,7 +41,7 @@ class Integrations::Facebook::MessageParser
     @response.app_id
   end
 
-  def sent_from_chatwoot_app?
+  def sent_from_op2_app?
     app_id && app_id == ENV['FB_APP_ID'].to_i
   end
 end

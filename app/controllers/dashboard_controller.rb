@@ -21,15 +21,15 @@ class DashboardController < ActionController::Base
       'PRIVACY_URL',
       'DISPLAY_MANIFEST',
       'CREATE_NEW_ACCOUNT_FROM_DASHBOARD',
-      'CHATWOOT_INBOX_TOKEN',
+      'op2_INBOX_TOKEN',
       'API_CHANNEL_NAME',
       'API_CHANNEL_THUMBNAIL'
     ).merge(
-      APP_VERSION: Chatwoot.config[:version]
+      APP_VERSION: op2.config[:version]
     )
   end
 
   def ensure_installation_onboarding
-    redirect_to '/installation/onboarding' if ::Redis::Alfred.get(::Redis::Alfred::CHATWOOT_INSTALLATION_ONBOARDING)
+    redirect_to '/installation/onboarding' if ::Redis::Alfred.get(::Redis::Alfred::op2_INSTALLATION_ONBOARDING)
   end
 end

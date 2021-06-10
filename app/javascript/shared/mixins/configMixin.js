@@ -1,16 +1,16 @@
 export default {
   computed: {
     hostURL() {
-      return window.chatwootConfig.hostURL;
+      return window.op2Config.hostURL;
     },
     twilioCallbackURL() {
       return `${this.hostURL}/twilio/callback`;
     },
     vapidPublicKey() {
-      return window.chatwootConfig.vapidPublicKey;
+      return window.op2Config.vapidPublicKey;
     },
     enabledLanguages() {
-      return window.chatwootConfig.enabledLanguages;
+      return window.op2Config.enabledLanguages;
     },
   },
 };

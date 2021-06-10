@@ -9,12 +9,12 @@ class Api::V1::Accounts::Integrations::SlackController < Api::V1::Accounts::Base
         inbox_id: params[:inbox_id]
       )
       @hook = builder.perform
-      create_chatwoot_slack_channel
+      create_op2_slack_channel
     end
   end
 
   def update
-    create_chatwoot_slack_channel
+    create_op2_slack_channel
     render json: @hook
   end
 
@@ -30,7 +30,7 @@ class Api::V1::Accounts::Integrations::SlackController < Api::V1::Accounts::Base
     @hook = Integrations::Hook.where(account: Current.account).find_by(app_id: 'slack')
   end
 
-  def create_chatwoot_slack_channel
+  def create_op2_slack_channel
     channel = params[:channel] || 'customer-conversations'
     builder = Integrations::Slack::ChannelBuilder.new(
       hook: @hook, channel: channel

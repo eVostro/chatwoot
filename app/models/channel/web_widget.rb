@@ -12,7 +12,7 @@
 #  website_url           :string
 #  welcome_tagline       :string
 #  welcome_title         :string
-#  widget_color          :string           default("#1f93ff")
+#  widget_color          :string           default("#676FF4")
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  account_id            :integer
@@ -58,7 +58,7 @@ class Channel::WebWidget < ApplicationRecord
         g.src=BASE_URL+\"/packs/js/sdk.js\";
         s.parentNode.insertBefore(g,s);
         g.onload=function(){
-          window.chatwootSDK.run({
+          window.op2SDK.run({
             websiteToken: '#{website_token}',
             baseUrl: BASE_URL
           })

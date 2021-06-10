@@ -8,8 +8,8 @@ describe('#Campagin Helper', () => {
   describe('stripTrailingSlash', () => {
     it('should return striped trailing slash if url with trailing slash is passed', () => {
       expect(
-        stripTrailingSlash({ URL: 'https://www.chatwoot.com/pricing/' })
-      ).toBe('https://www.chatwoot.com/pricing');
+        stripTrailingSlash({ URL: 'https://www.op2.com/pricing/' })
+      ).toBe('https://www.op2.com/pricing');
     });
   });
 
@@ -19,12 +19,12 @@ describe('#Campagin Helper', () => {
         {
           id: 1,
           timeOnPage: 3,
-          url: 'https://www.chatwoot.com/pricing',
+          url: 'https://www.op2.com/pricing',
         },
         {
           id: 2,
           timeOnPage: 6,
-          url: 'https://www.chatwoot.com/about',
+          url: 'https://www.op2.com/about',
         },
       ]);
     });
@@ -37,21 +37,21 @@ describe('#Campagin Helper', () => {
             {
               id: 1,
               timeOnPage: 3,
-              url: 'https://www.chatwoot.com/pricing',
+              url: 'https://www.op2.com/pricing',
             },
             {
               id: 2,
               timeOnPage: 6,
-              url: 'https://www.chatwoot.com/about',
+              url: 'https://www.op2.com/about',
             },
           ],
-          currentURL: 'https://www.chatwoot.com/about/',
+          currentURL: 'https://www.op2.com/about/',
         })
       ).toStrictEqual([
         {
           id: 2,
           timeOnPage: 6,
-          url: 'https://www.chatwoot.com/about',
+          url: 'https://www.op2.com/about',
         },
       ]);
     });

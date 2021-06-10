@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <script>
-      window.chatwootWebChannel = {
+      window.op2WebChannel = {
         avatarUrl: '<%= @web_widget.inbox.avatar_url %>',
         hasAConnectedAgentBot: '<%= @web_widget.inbox.agent_bot&.name %>',
         locale: '<%= @web_widget.account.locale %>',
@@ -24,10 +24,10 @@
         outOfOfficeMessage: <%= @web_widget.inbox.out_of_office_message.to_json.html_safe %>,
         utcOffset: '<%= ActiveSupport::TimeZone[@web_widget.inbox.timezone].formatted_offset %>'
       }
-      window.chatwootWidgetDefaults = {
+      window.op2WidgetDefaults = {
         useInboxAvatarForBot: <%= ActiveModel::Type::Boolean.new.cast(ENV.fetch('USE_INBOX_AVATAR_FOR_BOT', false)) %>,
       }
-      window.chatwootPubsubToken = '<%= @contact.pubsub_token %>'
+      window.op2PubsubToken = '<%= @contact.pubsub_token %>'
       window.authToken = '<%= @token %>'
       window.globalConfig = <%= raw @global_config.to_json %>
     </script>

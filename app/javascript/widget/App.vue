@@ -50,7 +50,7 @@ export default {
     },
   },
   mounted() {
-    const { websiteToken, locale } = window.chatwootWebChannel;
+    const { websiteToken, locale } = window.op2WebChannel;
     this.setLocale(locale);
     if (this.isIFrame) {
       this.registerListeners();
@@ -67,7 +67,7 @@ export default {
       this.sendRNWebViewLoadedEvent();
     }
     this.$store.dispatch('conversationAttributes/get');
-    this.setWidgetColor(window.chatwootWebChannel);
+    this.setWidgetColor(window.op2WebChannel);
     this.registerUnreadEvents();
   },
   methods: {
@@ -86,7 +86,7 @@ export default {
       });
     },
     setLocale(locale) {
-      const { enabledLanguages } = window.chatwootWebChannel;
+      const { enabledLanguages } = window.op2WebChannel;
       if (enabledLanguages.some(lang => lang.iso_639_1_code === locale)) {
         this.$root.$i18n.locale = locale;
       }
@@ -137,7 +137,7 @@ export default {
       this.$store.dispatch('events/create', { name: eventName });
     },
     registerListeners() {
-      const { websiteToken } = window.chatwootWebChannel;
+      const { websiteToken } = window.op2WebChannel;
       window.addEventListener('message', e => {
         if (!IFrameHelper.isAValidEvent(e)) {
           return;
@@ -193,7 +193,7 @@ export default {
         event: 'loaded',
         config: {
           authToken: window.authToken,
-          channelConfig: window.chatwootWebChannel,
+          channelConfig: window.op2WebChannel,
         },
       });
     },
@@ -202,7 +202,7 @@ export default {
         event: 'loaded',
         config: {
           authToken: window.authToken,
-          channelConfig: window.chatwootWebChannel,
+          channelConfig: window.op2WebChannel,
         },
       });
     },

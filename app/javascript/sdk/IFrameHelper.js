@@ -22,7 +22,7 @@ import {
 } from './bubbleHelpers';
 import { dispatchWindowEvent } from 'shared/helpers/CustomEventHelper';
 
-const EVENT_NAME = 'chatwoot:ready';
+const EVENT_NAME = 'op2:ready';
 
 export const IFrameHelper = {
   getUrl({ baseUrl, websiteToken }) {
@@ -42,11 +42,11 @@ export const IFrameHelper = {
     }
     iframe.src = widgetUrl;
 
-    iframe.id = 'chatwoot_live_chat_widget';
+    iframe.id = 'op2_live_chat_widget';
     iframe.style.visibility = 'hidden';
 
-    let holderClassName = `woot-widget-holder woot--hide woot-elements--${window.$chatwoot.position}`;
-    if (window.$chatwoot.hideMessageBubble) {
+    let holderClassName = `woot-widget-holder woot--hide woot-elements--${window.$op2.position}`;
+    if (window.$op2.hideMessageBubble) {
       holderClassName += ` woot-widget--without-bubble`;
     }
     addClass(widgetHolder, holderClassName);
@@ -56,12 +56,12 @@ export const IFrameHelper = {
     IFrameHelper.initWindowSizeListener();
     IFrameHelper.preventDefaultScroll();
   },
-  getAppFrame: () => document.getElementById('chatwoot_live_chat_widget'),
+  getAppFrame: () => document.getElementById('op2_live_chat_widget'),
   getBubbleHolder: () => document.getElementsByClassName('woot--bubble-holder'),
   sendMessage: (key, value) => {
     const element = IFrameHelper.getAppFrame();
     element.contentWindow.postMessage(
-      `chatwoot-widget:${JSON.stringify({ event: key, ...value })}`,
+      `op2-widget:${JSON.stringify({ event: key, ...value })}`,
       '*'
     );
   },
@@ -69,11 +69,11 @@ export const IFrameHelper = {
     window.onmessage = e => {
       if (
         typeof e.data !== 'string' ||
-        e.data.indexOf('chatwoot-widget:') !== 0
+        e.data.indexOf('op2-widget:') !== 0
       ) {
         return;
       }
-      const message = JSON.parse(e.data.replace('chatwoot-widget:', ''));
+      const message = JSON.parse(e.data.replace('op2-widget:', ''));
       if (typeof IFrameHelper.events[message.event] === 'function') {
         IFrameHelper.events[message.event](message);
       }
@@ -103,29 +103,29 @@ export const IFrameHelper = {
         expires: 365,
         sameSite: 'Lax',
       });
-      window.$chatwoot.hasLoaded = true;
+      window.$op2.hasLoaded = true;
       IFrameHelper.sendMessage('config-set', {
-        locale: window.$chatwoot.locale,
-        position: window.$chatwoot.position,
-        hideMessageBubble: window.$chatwoot.hideMessageBubble,
-        showPopoutButton: window.$chatwoot.showPopoutButton,
+        locale: window.$op2.locale,
+        position: window.$op2.position,
+        hideMessageBubble: window.$op2.hideMessageBubble,
+        showPopoutButton: window.$op2.showPopoutButton,
       });
       IFrameHelper.onLoad({
         widgetColor: message.config.channelConfig.widgetColor,
       });
       IFrameHelper.toggleCloseButton();
 
-      if (window.$chatwoot.user) {
-        IFrameHelper.sendMessage('set-user', window.$chatwoot.user);
+      if (window.$op2.user) {
+        IFrameHelper.sendMessage('set-user', window.$op2.user);
       }
       dispatchWindowEvent(EVENT_NAME);
     },
 
     setBubbleLabel(message) {
-      if (window.$chatwoot.hideMessageBubble) {
+      if (window.$op2.hideMessageBubble) {
         return;
       }
-      setBubbleText(window.$chatwoot.launcherTitle || message.label);
+      setBubbleText(window.$op2.launcherTitle || message.label);
     },
 
     toggleBubble: () => {
@@ -145,7 +145,7 @@ export const IFrameHelper = {
 
     setUnreadMode: message => {
       const { unreadMessageCount } = message;
-      const { isOpen } = window.$chatwoot;
+      const { isOpen } = window.$op2;
       const toggleValue = true;
 
       if (!isOpen && unreadMessageCount > 0) {
@@ -173,14 +173,14 @@ export const IFrameHelper = {
   onLoad: ({ widgetColor }) => {
     const iframe = IFrameHelper.getAppFrame();
     iframe.style.visibility = '';
-    iframe.setAttribute('id', `chatwoot_live_chat_widget`);
+    iframe.setAttribute('id', `op2_live_chat_widget`);
 
     if (IFrameHelper.getBubbleHolder().length) {
       return;
     }
     createBubbleHolder();
     onLocationChangeListener();
-    if (!window.$chatwoot.hideMessageBubble) {
+    if (!window.$op2.hideMessageBubble) {
       const chatIcon = createBubbleIcon({
         className: 'woot-widget-bubble',
         src: bubbleImg,
@@ -188,7 +188,7 @@ export const IFrameHelper = {
       });
 
       const closeIcon = closeBubble;
-      const closeIconclassName = `woot-elements--${window.$chatwoot.position} woot-widget-bubble woot--close woot--hide`;
+      const closeIconclassName = `woot-elements--${window.$op2.position} woot-widget-bubble woot--close woot--hide`;
       addClass(closeIcon, closeIconclassName);
 
       chatIcon.style.background = widgetColor;

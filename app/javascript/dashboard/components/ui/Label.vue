@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import { getContrastingTextColor } from '@chatwoot/utils';
+import { getContrastingTextColor } from '@op2/utils';
 export default {
   props: {
     title: {

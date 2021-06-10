@@ -36,7 +36,7 @@ Share the server logs to debug the issue further
 
 **Environment**
 
-Describe whether you are using Chatwoot Cloud (app.chatwoot.com) or a self hosted installation of Chatwoot. If you are using a self hosted installation of Chatwoot describe the type of deployment (Docker/Linux VM installation/Heroku)
+Describe whether you are using bnk2 Cloud (app.op2.com) or a self hosted installation of op2. If you are using a self hosted installation of bnk2 describe the type of deployment (Docker/Linux VM installation/Heroku)
 
 **Desktop (please complete the following information):**
  - OS: [e.g. iOS]

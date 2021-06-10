@@ -203,7 +203,7 @@ export default {
   watch: {
     currentUser(newUserInfo, oldUserInfo) {
       if (!oldUserInfo.email && newUserInfo.email) {
-        this.setChatwootUser();
+        this.setop2User();
       }
     },
   },
@@ -212,17 +212,17 @@ export default {
     this.$store.dispatch('inboxes/get');
     this.$store.dispatch('notifications/unReadCount');
     this.$store.dispatch('teams/get');
-    this.setChatwootUser();
+    this.setop2User();
   },
   methods: {
     toggleSupportChatWindow() {
-      window.$chatwoot.toggle();
+      window.$op2.toggle();
     },
-    setChatwootUser() {
-      if (!this.currentUser.email || !this.globalConfig.chatwootInboxToken) {
+    setop2User() {
+      if (!this.currentUser.email || !this.globalConfig.op2InboxToken) {
         return;
       }
-      window.$chatwoot.setUser(this.currentUser.email, {
+      window.$op2.setUser(this.currentUser.email, {
         name: this.currentUser.name,
         email: this.currentUser.email,
         avatar_url: this.currentUser.avatar_url,

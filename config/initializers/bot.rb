@@ -16,7 +16,7 @@ unless Rails.env.production?
 end
 
 # ref: https://github.com/jgorset/facebook-messenger#make-a-configuration-provider
-class ChatwootFbProvider < Facebook::Messenger::Configuration::Providers::Base
+class op2FbProvider < Facebook::Messenger::Configuration::Providers::Base
   def valid_verify_token?(_verify_token)
     ENV['FB_VERIFY_TOKEN']
   end
@@ -32,10 +32,10 @@ class ChatwootFbProvider < Facebook::Messenger::Configuration::Providers::Base
   private
 
   def bot
-    Chatwoot::Bot
+    op2::Bot
   end
 end
 
 Facebook::Messenger.configure do |config|
-  config.provider = ChatwootFbProvider.new
+  config.provider = op2FbProvider.new
 end
